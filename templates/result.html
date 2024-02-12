@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MBTI Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            text-align: center;
+            padding: 30px 0;
+            color: #333;
+            text-transform: uppercase;
+        }
+        
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            border: 1px solid #000;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        .table2 {
+            margin: 20px auto;
+            border-collapse: separate;
+            border-spacing: 0px;
+        }
+        
+        .table2 td {
+            border: 1px solid #000;
+            padding: 15px 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .bold-text {
+            font-weight: bold;
+        }
+        
+        .personality-type {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        .footer {
+    /* Adjust footer styles */
+    position: fixed; /* Fixed position */
+    bottom: 0; /* Stick to the bottom */
+    width: 100%;
+    background-color: rgba(93, 243, 185, 0.616);
+    color: black;
+    text-align: center;
+    padding: 10px 0;
+        }
+        header {
+            background-color: rgba(14, 196, 126, 0.616); 
+            color: white;
+            text-align: center;
+            padding: 0px 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Al-Impex Business Plc</h1>
+    </header>
+    <h1>MBTI Personality Test Result</h1>
+    <table>
+        <tr>
+            <th></th>
+            <th colspan="2">Col 1</th>
+            <th></th>
+            <th colspan="2">Col 2</th>
+            <th></th>
+            <th colspan="2">Col 3</th>
+            <th></th>
+            <th colspan="2">Col 4</th>
+            <th></th>
+            <th colspan="2">Col 5</th>
+            <th></th>
+            <th colspan="2">Col 6</th>
+            <th></th>
+            <th colspan="2">Col 7</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>A</th>
+            <th>B</th>
+            <th></th>
+            <th>A</th>
+            <th>B</th>
+            <th></th>
+            <th>A</th>
+            <th>B</th>
+            <th></th>
+            <th>A</th>
+            <th>B</th>
+            <th></th>
+            <th>A</th>
+            <th>B</th>
+            <th></th>
+            <th>A</th>
+            <th>B</th>
+            <th></th>
+            <th>A</th>
+            <th>B</th>
+        </tr>
+        {% if counts %}
+        <tr>
+            <td></td>
+            <td>{{ counts['Column 1']['A'] }}</td>
+            <td>{{ counts['Column 1']['B'] }}</td>
+            <td></td>
+            <td>{{ counts['Column 2']['A'] }}</td>
+            <td>{{ counts['Column 2']['B'] }}</td>
+            <td></td>
+            <td>{{ counts['Column 3']['A'] }}</td>
+            <td>{{ counts['Column 3']['B'] }}</td>
+            <td></td>
+            <td>{{ counts['Column 4']['A'] }}</td>
+            <td>{{ counts['Column 4']['B'] }}</td>
+            <td></td>
+            <td>{{ counts['Column 5']['A'] }}</td>
+            <td>{{ counts['Column 5']['B'] }}</td>
+            <td></td>
+            <td>{{ counts['Column 6']['A'] }}</td>
+            <td>{{ counts['Column 6']['B'] }}</td>
+            <td></td>
+            <td>{{ counts['Column 7']['A'] }}</td>
+            <td>{{ counts['Column 7']['B'] }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="14">No data available</td>
+        </tr>
+        {% endif %}
+    </table>
+    <table class="table2">
+
+        <tr>
+            <td></td>
+            <td class="bold-text">{% if counts['Column 1']['A'] > counts['Column 1']['B'] %} E {% else %} I {% endif %}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="bold-text">{% if counts['Column 2']['A'] + counts['Column 3']['A'] > counts['Column 2']['B'] + counts['Column 3']['B'] %} <strong>S</strong> {% else %} <strong>N</strong> {% endif %}</td>
+            <td></td>
+            <td class="bold-text">{% if counts['Column 4']['A'] + counts['Column 5']['A'] > counts['Column 4']['B'] + counts['Column 5']['B'] %} <strong>T</strong> {% else %} <strong>F</strong> {% endif %}</td>
+            <td></td>
+            <td></td>
+            <td class="bold-text">{% if counts['Column 6']['A'] + counts['Column 7']['A'] > counts['Column 6']['B'] + counts['Column 7']['B'] %} <strong>J</strong> {% else %} <strong>P</strong> {% endif %}</td>
+            <td></td>
+           
+        </tr>
+        
+        <tr>
+            <td></td>
+            <td>E</td>
+            <td>I</td>
+            <td></td>
+            <td>S</td>
+            <td>N</td>
+            <td></td>
+            <td>T</td>
+            <td>F</td>
+            <td></td>
+            <td>J</td>
+            <td>P</td>
+           
+        </tr>
+    </table>
+    <div class="personality-type">
+                <h4>Your Personality Type is:</h4>   <p>
+            {% if combined_ptype %}
+                {{ combined_ptype }}
+            {% else %}
+                {{ ptype }}
+            {% endif %}
+        </p>
+     
+    </div>
+    <div class="footer">
+        <p>&copy; 2023 MBTI Personality Test</p>
+    </div>
+</body>
+</html>
+       

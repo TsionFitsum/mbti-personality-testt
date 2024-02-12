@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login - MBTI Personality Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        .login-form {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .input-group input[type="text"],
+        .input-group input[type="password"] {
+            width: calc(100% - 12px);
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+
+        .input-group input[type="text"]:focus,
+        .input-group input[type="password"]:focus {
+            outline: none;
+            border-color: #555;
+        }
+
+        .login-form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-form input[type="submit"]:hover {
+            background-color: #555;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(93, 243, 185, 0.616);
+            color: black;
+            text-align: center;
+            padding: 10px 0;
+        }
+        
+        header {
+            background-color: rgba(93, 243, 185, 0.616); 
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        
+    </style>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('.login-form').addEventListener('submit', function (e) {
+                var username = document.getElementById('username').value;
+                var password = document.getElementById('password').value;
+                
+                // Perform validation (Replace this with your own validation logic)
+                if (username !== 'admin' || password !== '1234') {
+                    e.preventDefault(); // Prevent form submission
+                    alert('Invalid username or password!');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Al-Impex Business Plc</h1>
+    </header>
+    <div class="container">
+        <h1>Admin Login</h1>
+        <form action="/admin_login_submit" method="post" class="login-form">
+            <div class="input-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    <div class="footer">
+        <p>&copy; 2023 MBTI Personality Test</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to MBTI Personality Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            text-align: center;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .container h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .container p {
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        /* Style for buttons */
+        .role-buttons {
+            display: flex;
+            justify-content: center;
+        }
+
+        .role-buttons button {
+            padding: 12px 24px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: #333;
+            color: white;
+        }
+
+        .role-buttons button:hover {
+            background-color: #555;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #555;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(14, 196, 126, 0.616);;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        header {
+            background-color: rgba(14, 196, 126, 0.616); 
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+    </style>
+</head>
+<body>    
+    <header>
+    <h1>Al-Impex Business Plc</h1>
+</header>
+    <div class="container">
+        <h1>Welcome to the MBTI Personality Test</h1>
+        <p>Please select your role:</p>
+        <form action="/redirect_user" method="post" class="role-buttons">
+            <button type="submit" name="testTaker" value="testTaker">Register</button>
+            <button type="submit" name="admin" value="admin">Admin</button>
+            <button type="submit" name="loginToTest" value="loginToTest">LoginToTest</button>
+        </form>
+    </div>
+    <div class="footer">
+        <p>&copy; 2023 MBTI Personality Test</p>
+    </div>
+</body>
+</html>

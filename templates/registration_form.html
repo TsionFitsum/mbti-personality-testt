@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personality Test  Registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Link to your CSS file for styling -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('registrationForm');
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const namePattern = /^[A-Za-z\s]+$/; // Pattern to allow only alphabets and spaces for name
+            
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent the default form submission
+                
+                let valid = true;
+
+                // Validate Name - Allow only alphabets and spaces
+                if (!namePattern.test(nameInput.value)) {
+                    alert('Please enter a valid name (only alphabets and spaces are allowed).');
+                    valid = false;
+                }
+
+                fetch('/get_users_data')
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+
+                        const userExistsWithEmail = data.some(user => user.email === emailInput.value);
+                        
+                        if (userExistsWithEmail) {
+                            alert('User with this email already exists!');
+                            valid = false;
+                            // Prevent form submission or perform additional actions
+                        }
+
+                        if (valid) {
+                            // If everything is valid, you might want to submit the form
+                            form.submit();
+                            // Manipulate browser history to prevent going back
+                            history.pushState(null, null, window.location.href);
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            });
+        });
+        
+        // Prevent going back when using browser navigation
+        window.addEventListener('popstate', function (event) {
+            history.pushState(null, null, window.location.href);
+        });
+
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Personality Test Registration</h1>
+        <form id="registrationForm" action="/register" method="post">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="gender">Gender:</label><br>
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label><br><br>
+
+            <label for="department">Department:</label><br>
+            <select id="department" name="department" required>
+                <option value="Sales">Sales</option>
+                <option value="FMCG">FMCG</option>
+                <option value="Finance">Finance</option>
+                <option value="Logistics">Logistics</option>
+                <option value="IT">IT</option>
+                <option value="Other">Other</option>
+                <!-- Add more options as needed -->
+            </select><br><br>
+
+            <input type="submit" value="Register">
+        </form>
+    </div>
+</body>
+</html>
